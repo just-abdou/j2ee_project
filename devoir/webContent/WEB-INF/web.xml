@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>devoir</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>lesServlets</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>AuthentificationFilter</filter-name>
+    <filter-class>lesServlets.AuthentificationFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>AuthentificationFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>AddUserWebService</servlet-name>
+    <servlet-class>lesServlets.AddUserWebService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUserWebService</servlet-name>
+    <url-pattern>/AddUserWebService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AuthenticationServlet</servlet-name>
+    <servlet-class>lesServlets.AuthenticationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthenticationServlet</servlet-name>
+    <url-pattern>/AuthenticationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChangePasswordWebService</servlet-name>
+    <servlet-class>lesServlets.ChangePasswordWebService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordWebService</servlet-name>
+    <url-pattern>/ChangePasswordWebService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAppleOffer</display-name>
+    <servlet-name>AddAppleOffer</servlet-name>
+    <servlet-class>lesServlets.AddAppleOffer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAppleOffer</servlet-name>
+    <url-pattern>/AddAppleOffer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>lesServlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+    
+</web-app>
